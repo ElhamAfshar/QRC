@@ -1,5 +1,5 @@
 import type { Context } from "https://deno.land/x/oak/mod.ts";
-import { Province, RProvince } from "../../Schemas/province.ts";
+import { Province, RProvince } from "../../Schemas/index.ts";
 import { throwError } from "../../Utils/Function/throw_err.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/common_types.ts";
 import { addingProvince } from "./Funcs/add.ts";
