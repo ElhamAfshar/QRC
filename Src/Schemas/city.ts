@@ -3,17 +3,19 @@ import db from "../utils/DbConfig/db.ts";
 import { LatLong } from "./lat_long.ts";
 
 export interface City {
+  
   _id: ObjectId;
   name: string;
   enName: string;
   coordinates: LatLong[];
+  provinceId:ObjectId
 }
 
 export interface RCity {
   _id?: 0 | 1;
   name?: 0 | 1;
   enName?: 0 | 1;
-  coordinates?: LatLong[];
+  coordinates?: 0|1;
+  provinceId?:0 |1;
 }
-
-export const cities = db.collection<City>("Provinces");
+export const cities = db.collection<City>("Cities");
