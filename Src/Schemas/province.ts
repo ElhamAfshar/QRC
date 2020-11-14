@@ -1,10 +1,8 @@
 import type { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 import db from "../utils/db";
+import {LatLong} from "./lat_long"
 
-export interface LatLong {
-  lat: string;
-  long: string;
-}
+
 
 export interface Province {
   _id: ObjectId;
