@@ -1,5 +1,5 @@
 import type { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
-import db from "../utils/DbConfig/db.ts";
+import db from "../Utils/DbConfig/db.ts";
 import { LatLong } from "./lat_long.ts";
 
 export interface Province {

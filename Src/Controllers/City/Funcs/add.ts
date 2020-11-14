@@ -2,8 +2,8 @@ import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 import { creating } from "../../../Cfns/create.ts";
 import { cities, City, provinces, Province, RCity } from "../../../Schemas/index.ts";
 import { throwError } from "../../../Utils/Function/throw_err.ts";
-import { isAdminFn, isAuthFn } from "../../../Utils/middlewares/isAuthFn.ts";
-import type { details } from "../../../utils/typescript/commonTypes.ts";
+//import { isAdminFn, isAuthFn } from "../../../Utils/middlewares/isAuthFn.ts";
+import type { details } from "../../../Utils/TypeScript/common_types.ts";
 import { CityExtraBody } from "../city.ts";
 
 
@@ -13,10 +13,10 @@ export const addingCity = async (
   token: string | null,
   details: CityDetails
 ): Promise<Partial<City>> => {
-  const user = token
-    ? await isAuthFn(token)
-    : throwError("your token is empty");
-  const isAdmin = isAdminFn(user);
+  // const user = token
+  //   ? await isAuthFn(token)
+  //   : throwError("your token is empty");
+  // const isAdmin = isAdminFn(user);
 
   const createCity = async (details: CityDetails) => {
     const { name, enName, state } = details.body!;
@@ -42,7 +42,7 @@ export const addingCity = async (
     };
   };
 
-  return isAdmin
-    ? await genSelected(details)
-    : throwError("you don not have enough permission to do this");
+  // return isAdmin
+   await genSelected(details)
+    // : throwError("you don not have enough permission to do this");
 };

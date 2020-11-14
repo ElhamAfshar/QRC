@@ -1,5 +1,5 @@
 import { Application, Context, Router } from "https://deno.land/x/oak/mod.ts";
-import mannageRoutes from "./src/route.ts";
+import mannageRoutes from "./Src/Routes/route.ts";
 
 const router = new Router();
 const app = new Application();
