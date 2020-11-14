@@ -4,8 +4,10 @@ import { throwError } from "../../Utils/Function/throw_err.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/common_types.ts";
 import { addingProvince } from "./Funcs/add.ts";
 
-export const Provice = async ({ response, request }: Context) => {
+export const ProvinceMaster = async ({ response, request }: Context) => {
   try {
+    console.log("&&&&&&&&");
+
     if (!request.hasBody) throwError("No data provided");
 
     const body = request.body({ type: "json" });
@@ -22,6 +24,8 @@ export const Provice = async ({ response, request }: Context) => {
     const token = request.headers.get("token");
     switch (wants) {
       case "create":
+        console.log("*******");
+
         reply.body = [await addingProvince(token, details)];
         break;
 
