@@ -9,7 +9,7 @@ import { redis } from "../../../Utils/Config/redis.ts";
 import type { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 import type { details } from "../../../Utils/TypeScript/common_types.ts";
 import { findOne, creating } from "../../../Cfns/index.ts";
-import { updating } from "../../../Cfns/update.ts";
+import { update } from "../../../Cfns/index.ts";
 // import {
 //   makeJwt,
 //   setExpiration,
@@ -51,10 +51,10 @@ export const SignReq = async (token: string | null, details: SignDetails) => {
     );
   } else {
     console.log("---1");
-    console.log(foundUser);
+    // console.log(foundUser);
     // foundUser.GuestUserId.push(user._id);
-    foundUser.lastName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    await updating<User>({ _id: foundUser._id }, foundUser, users);
+    // foundUser.lastName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    await update<User>({ _id: foundUser._id }, foundUser, users);
   }
   const code = createVerificationCode();
   console.log(code);

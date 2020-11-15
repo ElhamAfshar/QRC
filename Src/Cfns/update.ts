@@ -3,7 +3,7 @@ import {
   FilterType,
 } from "https://deno.land/x/mongo@v0.12.1/ts/collection.ts";
 
-export const updating = async <C>(
+export const update = async <C>(
   queryDetail: FilterType<C>,
   updateDetail: FilterType<C>,
   model: Collection<C>
