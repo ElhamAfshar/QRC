@@ -1,11 +1,16 @@
 import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 import { creating } from "../../../cfns/creating.ts";
-import { cities, City, provinces, Province, RCity } from "../../../Schema/index.ts";
-import { throwError } from "../../../utils/functions/throwErr.ts";
+import {
+  cities,
+  City,
+  provinces,
+  Province,
+  RCity,
+} from "../../../Schema/index.ts";
+import { throwError } from "../../../Utils/functions/throwErr.ts";
 import { isAdminFn, isAuthFn } from "../../../utils/middlewares/isAuthFn.ts";
-import type { details } from "../../../utils/typescript/commonTypes.ts";
+import type { details } from "../../../Utils/typescript/commonTypes.ts";
 import { CityExtraBody } from "../city.ts";
-
 
 type CityDetails = details<RCity, City, CityExtraBody>;
 

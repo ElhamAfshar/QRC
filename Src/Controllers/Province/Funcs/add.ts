@@ -32,10 +32,8 @@ export const addingProvince = async (
       _id: await createProvice(details),
     };
   };
-  const a = genSelected(details);
-  console.log("*****");
-  console.log(a);
-  return a;
+  return genSelected(details);
+
   // return isAdmin
   //   ?
   //     genSelected(details);
