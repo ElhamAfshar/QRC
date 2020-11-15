@@ -2,13 +2,14 @@
   "$schema": "https://deno.land/x/denon/schema.json",
   "scripts": {
     "start": {
-      "cmd": "denon run index.ts",
+      "cmd": "denon run ---unstable -allow-net  --allow-read --allow-write --allow-plugin  index.ts",
       "desc": "run my app.ts file",
-      "allow": ["plugin", "net", "read", "write", "env"],
+      "allow": ["net", "plugin", "read", "write", "env"],
       "unstable": true,
       "watch": true
     }
   },
+
   "watcher": {
     "interval": 350,
     "match": ["./src/**/*.ts", "./index.ts", "./scripts.json"],
