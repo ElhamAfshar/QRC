@@ -1,4 +1,4 @@
-import { Merge } from "./mergInterface.ts";
+import { Merge } from "./merg_interface.ts";
 
 export interface Reply<T> {
   success: boolean;

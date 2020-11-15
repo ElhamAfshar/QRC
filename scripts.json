@@ -2,7 +2,7 @@
   "$schema": "https://deno.land/x/denon/schema.json",
   "scripts": {
     "start": {
-      "cmd": "denon run ---unstable -allow-net  --allow-read --allow-write --allow-plugin  index.ts",
+      "cmd": "denon run ---unstable --allow-net  --allow-read --allow-write --allow-plugin  index.ts",
       "desc": "run my app.ts file",
       "allow": ["net", "plugin", "read", "write", "env"],
       "unstable": true,

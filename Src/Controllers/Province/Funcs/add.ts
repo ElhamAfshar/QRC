@@ -14,7 +14,6 @@ export const addingProvince = async (
   //   ? await isAuthFn(token)
   //   : throwError("your token is empty");
   //     const isAdmin = isAdminFn(user);
-  console.log("@@@@@@");
 
   const createProvice = async (details: ProvinceDetails) => {
     const { name, enName, coordinates } = details.body!;
@@ -33,8 +32,8 @@ export const addingProvince = async (
       _id: await createProvice(details),
     };
   };
-
   return genSelected(details);
+
   // return isAdmin
   //   ?
   //     genSelected(details);

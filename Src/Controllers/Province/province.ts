@@ -6,8 +6,6 @@ import { addingProvince } from "./Funcs/add.ts";
 
 export const ProvinceMaster = async ({ response, request }: Context) => {
   try {
-    console.log("&&&&&&&&");
-
     if (!request.hasBody) throwError("No data provided");
 
     const body = request.body({ type: "json" });
@@ -24,8 +22,6 @@ export const ProvinceMaster = async ({ response, request }: Context) => {
     const token = request.headers.get("token");
     switch (wants) {
       case "create":
-        console.log("*******");
-
         reply.body = [await addingProvince(token, details)];
         break;
 
@@ -34,6 +30,7 @@ export const ProvinceMaster = async ({ response, request }: Context) => {
         break;
     }
     response.status = 201;
+    response.body = reply;
   } catch (error) {
     response.status = 500;
     response.body = {
