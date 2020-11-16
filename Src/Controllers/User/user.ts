@@ -3,6 +3,8 @@ import { User, RUser } from "../../Schemas/index.ts";
 import { throwError } from "../../Utils/Function/throw_err.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/common_types.ts";
 import { SignReq } from "./Funcs/sign_req.ts";
+import { Read } from "./Funcs/read.ts";
+import { Signing } from "./Funcs/signing.ts";
 
 export const UserMaster = async ({ response, request }: Context) => {
   try {
@@ -15,19 +17,27 @@ export const UserMaster = async ({ response, request }: Context) => {
       body: [],
     };
 
-    const { wants, details }: myBodies<RUser, User, {}> = await body.value;
+    const {
+      wants,
+      details,
+    }: myBodies<RUser, User, { code: string }> = await body.value;
     const token = request.headers.get("token");
     switch (wants) {
       case "create":
         [await SignReq(token, details)];
+        response.body = "success";
         break;
-
+      case "get":
+        response.body = [await Read(token, details)];
+        break;
+      case "singning":
+        response.body = [await Signing(token, details)];
+        break;
       default:
         throwError("must be chose what you want's");
         break;
     }
     response.status = 201;
-    response.body = "success";
   } catch (error) {
     response.status = 500;
     response.body = {
