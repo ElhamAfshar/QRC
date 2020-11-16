@@ -1,15 +1,15 @@
 import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
-import { creating } from "../../../cfns/creating.ts";
+import { creating, findOne } from "../../../Cfns/index.ts";
 import {
   cities,
   City,
-  provinces,
-  Province,
   RCity,
-} from "../../../Schema/index.ts";
-import { throwError } from "../../../Utils/functions/throwErr.ts";
-import { isAdminFn, isAuthFn } from "../../../utils/middlewares/isAuthFn.ts";
-import type { details } from "../../../Utils/typescript/commonTypes.ts";
+  Province,
+  provinces,
+} from "../../../Schemas/index.ts";
+import { throwError } from "../../../Utils/Function/index.ts";
+import { isAdminFn, isAuthFn } from "../../../Utils/Middlewares/index.ts";
+import type { details } from "../../../Utils/TypeScript/index.ts";
 import { CityExtraBody } from "../city.ts";
 
 type CityDetails = details<RCity, City, CityExtraBody>;
@@ -24,17 +24,18 @@ export const addingCity = async (
   const isAdmin = isAdminFn(user);
 
   const createCity = async (details: CityDetails) => {
-    const { name, enName, state } = details.body!;
-    const foundedState = await states.findOne({
-      _id: ObjectId(state),
-    });
-    return foundedState
+    const { name, enName, provinceId, coordinates } = details.body!;
+    const foundProvince = await findOne<Province>(
+      { _id: ObjectId(provinceId) },
+      provinces
+    );
+    return foundProvince
       ? await creating<City>(
           {
             name,
             enName,
-            state: foundedState._id,
-            country: foundedState.country,
+            provinceId: foundProvince._id,
+            coordinates,
           },
           cities
         )
