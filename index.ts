@@ -13,6 +13,7 @@ mannageRoutes(router);
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+Deno.env.set("ENVIROMENT", "production");
 
 await app.listen({ port: PORT }).then(() => {
   console.log(`App running on PORT ${PORT}`);

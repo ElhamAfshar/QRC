@@ -15,6 +15,7 @@ export enum Level {
 
 export interface User {
   _id: ObjectId;
+  GuestUserId: ObjectId[];
   firstName: string;
   lastName: string;
   nationalCode?: string;
