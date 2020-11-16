@@ -3,3 +3,7 @@ export * from "./province.ts";
 export * from "./lat_long.ts";
 export * from "./user.ts";
 export * from "./district.ts";
+export * from "./center.ts";
+export * from "./poll.ts";
+export * from "./question.ts";
+export * from "./qr.ts";
