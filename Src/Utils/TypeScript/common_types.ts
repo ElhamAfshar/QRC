@@ -5,7 +5,7 @@ export interface Reply<T> {
   body: Partial<T>[] | [];
 }
 
-type CRUD = "create" | "get" | "update" | "delete";
+type CRUD = "create" | "get" | "update" | "delete" | "singning";
 export interface details<R, T, E> {
   selected?: R;
   body?: Merge<T, E>;
