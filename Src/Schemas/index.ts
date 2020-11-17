@@ -7,3 +7,4 @@ export * from "./center.ts";
 export * from "./poll.ts";
 export * from "./question.ts";
 export * from "./qr.ts";
+export * from "./fill_form.ts";
