@@ -9,7 +9,7 @@ import {
   setExpiration,
   Jose,
   Payload,
-} from "https://deno.land/x@v1.9/djwt/mod.ts";
+} from "https://deno.land/x/djwt@v1.9/mod.ts";
 
 export const key = "your-secret";
 

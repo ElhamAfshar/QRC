@@ -18,10 +18,10 @@ export const addingCity = async (
   token: string | null,
   details: CityDetails
 ): Promise<Partial<City>> => {
-  const user = token
-    ? await isAuthFn(token)
-    : throwError("your token is empty");
-  const isAdmin = isAdminFn(user);
+  // const user = token
+  //   ? await isAuthFn(token)
+  //   : throwError("your token is empty");
+  // const isAdmin = isAdminFn(user);
 
   const createCity = async (details: CityDetails) => {
     const { name, enName, provinceId, coordinates } = details.body!;
@@ -48,7 +48,7 @@ export const addingCity = async (
     };
   };
 
-  return isAdmin
-    ? await genSelected(details)
-    : throwError("you don not have enough permission to do this");
+  // return isAdmin
+   await genSelected(details)
+    // : throwError("you don not have enough permission to do this");
 };

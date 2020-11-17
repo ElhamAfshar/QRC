@@ -1,5 +1,5 @@
-import { validateJwt } from "https://deno.land/x/djwt/validate.ts";
-import type { PayloadObject } from "https//deno.land/x/djwt/create.ts";
+import { validateJwt } from "https://deno.land/x/djwt@v1.9/mod.ts";
+import type { PayloadObject } from "https://deno.land/x/djwt@v1.9/mod.ts";
 import { Level, User, users } from "../../Schemas/index.ts";
 import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 import { throwError } from "../Function/index.ts";
@@ -15,7 +15,7 @@ export const isAdminFn = (user: User) => {
 };
 
 export const getTokenDetails = async (jwt: string) => {
-  const decoded = await validateJwt({
+  const decoded = await  ({
     jwt,
     key: "your-secret",
     algorithm: "HS256",
