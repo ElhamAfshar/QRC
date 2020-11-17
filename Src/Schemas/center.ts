@@ -9,7 +9,7 @@ export interface Center {
   address: string;
   coordinate: LatLong;
   isLegal: boolean;
-  agent?: ObjectId | null;
+  agent: ObjectId;
   image?: string;
 }
 
