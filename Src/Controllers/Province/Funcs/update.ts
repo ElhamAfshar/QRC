@@ -1,5 +1,5 @@
 import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
-import { creating, update } from "../../../Cfns/index.ts";
+import { update } from "../../../Cfns/index.ts";
 import { provinces, Province, RProvince } from "../../../Schemas/index.ts";
 import {
   throwError,

@@ -1,20 +1,23 @@
 import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
-import { creating, findOne } from "../../../Cfns/index.ts";
+import { update, findOne } from "../../../Cfns/index.ts";
 import {
-  cities,
-  City,
-  RCity,
-  Province,
   provinces,
+  Province,
+  RCity,
+  City,
+  cities,
 } from "../../../Schemas/index.ts";
-import { throwError } from "../../../Utils/Function/index.ts";
-import { isAdminFn, isAuthFn } from "../../../Utils/Middlewares/index.ts";
-import type { details } from "../../../Utils/TypeScript/index.ts";
+import {
+  throwError,
+  isAuthFn,
+  details,
+  isAdminFn,
+} from "../../../Utils/index.ts";
 import { CityExtraBody } from "../city.ts";
 
 type CityDetails = details<RCity, City, CityExtraBody>;
 
-export const addingCity = async (
+export const updateCity = async (
   token: string | null,
   details: CityDetails
 ): Promise<Partial<City>> => {
@@ -23,28 +26,30 @@ export const addingCity = async (
     : throwError("your token is empty");
   const isAdmin = isAdminFn(user);
 
-  const createCity = async (details: CityDetails) => {
-    const { name, enName, provinceId, coordinates } = details.body!;
+  const updateProvice = async (details: CityDetails) => {
+    const { _id, name, provinceId, enName, coordinates } = details.body!;
+
     const foundProvince = await findOne<Province>(
       { _id: ObjectId(provinceId) },
       provinces
     );
     return foundProvince
-      ? await creating<City>(
+      ? await update<Province>(
+          { _id: ObjectId(_id) },
           {
+            _id: ObjectId(_id),
             name,
             enName,
-            provinceId: foundProvince._id,
             coordinates,
           },
-          cities
+          provinces
         )
-      : throwError("we have issue to create the city");
+      : throwError("we have issue to update the city");
   };
 
   const genSelected = async (details: CityDetails) => {
     return {
-      _id: await createCity(details),
+      _id: (await updateProvice(details))._id,
     };
   };
 
