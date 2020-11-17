@@ -11,7 +11,7 @@ import { ProvinceExtraBody } from "../province.ts";
 
 type ProvinceDetails = details<RProvince, Province, ProvinceExtraBody>;
 
-export const updateProvince = async (
+export const updatingProvince = async (
   token: string | null,
   details: ProvinceDetails
 ): Promise<Partial<Province>> => {
@@ -36,7 +36,7 @@ export const updateProvince = async (
 
   const genSelected = async (details: ProvinceDetails) => {
     return {
-      _id: await (await updateProvice(details))._id,
+      _id: (await updateProvice(details))._id,
     };
   };
 

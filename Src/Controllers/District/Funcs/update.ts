@@ -1,9 +1,9 @@
 import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 import { update, findOne } from "../../../Cfns/index.ts";
 import {
-  provinces,
-  Province,
-  RCity,
+  District,
+  RDistrict,
+  districts,
   City,
   cities,
 } from "../../../Schemas/index.ts";
@@ -13,44 +13,40 @@ import {
   details,
   isAdminFn,
 } from "../../../Utils/index.ts";
-import { CityExtraBody } from "../city.ts";
+import { DistrictExtraBody } from "../district.ts";
 
-type CityDetails = details<RCity, City, CityExtraBody>;
+type DistrictDetails = details<RDistrict, District, DistrictExtraBody>;
 
-export const updateingCity = async (
+export const updatingDistrict = async (
   token: string | null,
-  details: CityDetails
+  details: DistrictDetails
 ): Promise<Partial<City>> => {
   const user = token
     ? await isAuthFn(token)
     : throwError("your token is empty");
   const isAdmin = isAdminFn(user);
 
-  const updateCity = async (details: CityDetails) => {
-    const { _id, name, provinceId, enName, coordinates } = details.body!;
+  const updateDistrict = async (details: DistrictDetails) => {
+    const { _id, name, cityId, enName, coordinates } = details.body!;
 
-    const foundProvince = await findOne<Province>(
-      { _id: ObjectId(provinceId) },
-      provinces
-    );
-    return foundProvince
-      ? await update<City>(
+    const foundCity = await findOne<City>({ _id: ObjectId(cityId) }, cities);
+    return foundCity
+      ? await update<District>(
           { _id: ObjectId(_id) },
           {
             _id: ObjectId(_id),
             name,
             enName,
             coordinates,
-            provinceId: foundProvince._id,
           },
-          cities
+          districts
         )
       : throwError("we have issue to update the city");
   };
 
-  const genSelected = async (details: CityDetails) => {
+  const genSelected = async (details: DistrictDetails) => {
     return {
-      _id: (await updateCity(details))._id,
+      _id: (await updateDistrict(details))._id,
     };
   };
 

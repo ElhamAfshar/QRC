@@ -3,9 +3,11 @@ import { District, RDistrict } from "../../Schemas/index.ts";
 import { throwError } from "../../Utils/Function/throw_err.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/common_types.ts";
 import { addingDistrict } from "./Funcs/add.ts";
+import { updatingDistrict } from "./Funcs/update.ts";
 
 export interface DistrictExtraBody {
   cityId: string;
+  _id: string;
 }
 
 export const DistrictMaster = async ({ response, request }: Context) => {
@@ -29,6 +31,8 @@ export const DistrictMaster = async ({ response, request }: Context) => {
         reply.body = [await addingDistrict(token, details)];
         break;
 
+      case "update":
+        reply.body = [await updatingDistrict(token, details)];
       default:
         throwError("must be chose what you want's");
         break;

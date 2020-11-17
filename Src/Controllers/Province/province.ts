@@ -2,7 +2,7 @@ import type { Context } from "https://deno.land/x/oak/mod.ts";
 import { Province, RProvince } from "../../Schemas/index.ts";
 import { throwError } from "../../Utils/Function/throw_err.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/common_types.ts";
-import { addingProvince, updateProvince } from "./Funcs/index.ts";
+import { addingProvince, updatingProvince } from "./Funcs/index.ts";
 
 export interface ProvinceExtraBody {
   _id: string;
@@ -29,7 +29,7 @@ export const ProvinceMaster = async ({ response, request }: Context) => {
         reply.body = [await addingProvince(token, details)];
         break;
       case "update":
-        reply.body = [await updateProvince(token, details)];
+        reply.body = [await updatingProvince(token, details)];
         break;
 
       default:

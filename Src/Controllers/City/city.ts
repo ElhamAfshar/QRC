@@ -2,7 +2,7 @@ import type { Context } from "https://deno.land/x/oak/mod.ts";
 import { City, RCity } from "../../Schemas/index.ts";
 import { throwError } from "../../Utils/Function/index.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/index.ts";
-import { addingCity, updateCity } from "./Funcs/index.ts";
+import { addingCity, updateingCity } from "./Funcs/index.ts";
 
 export interface CityExtraBody {
   provinceId: string;
@@ -30,7 +30,7 @@ export const city = async ({ response, request }: Context) => {
         reply.body = [await addingCity(token, details)];
         break;
       case "update":
-        reply.body = [await updateCity(token, details)];
+        reply.body = [await updateingCity(token, details)];
       default:
         throwError("must be choose what you want's");
         break;
