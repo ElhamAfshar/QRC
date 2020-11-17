@@ -1,19 +1,19 @@
-import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 import { creating } from "../../../Cfns/create.ts";
 import { provinces, Province, RProvince } from "../../../Schemas/province.ts";
-import { throwError } from "../../../Utils/Function/throw_err.ts";
+import { throwError, isAdminFn, isAuthFn } from "../../../Utils/index.ts";
 import type { details } from "../../../Utils/TypeScript/common_types.ts";
+import { ProvinceExtraBody } from "../province.ts";
 
-type ProvinceDetails = details<RProvince, Province, {}>;
+type ProvinceDetails = details<RProvince, Province, ProvinceExtraBody>;
 
 export const addingProvince = async (
   token: string | null,
   details: ProvinceDetails
 ): Promise<Partial<Province>> => {
-  //     const user = token
-  //   ? await isAuthFn(token)
-  //   : throwError("your token is empty");
-  //     const isAdmin = isAdminFn(user);
+  const user = token
+    ? await isAuthFn(token)
+    : throwError("your token is empty");
+  const isAdmin = isAdminFn(user);
 
   const createProvice = async (details: ProvinceDetails) => {
     const { name, enName, coordinates } = details.body!;
@@ -32,10 +32,8 @@ export const addingProvince = async (
       _id: await createProvice(details),
     };
   };
-  return genSelected(details);
 
-  // return isAdmin
-  //   ?
-  //     genSelected(details);
-  //   throwError("you don not have enough permission to do this");
+  return isAdmin
+    ? genSelected(details)
+    : throwError("you don not have enough permission to do this");
 };
