@@ -5,7 +5,7 @@ import db from "../Utils/Config/db.ts";
 export interface Poll {
   _id: ObjectId;
   question: string;
-  Order: number;
+  order: number;
   multiAnswer: boolean;
   answer: string[];
 }
