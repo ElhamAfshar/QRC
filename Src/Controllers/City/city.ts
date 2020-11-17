@@ -1,7 +1,7 @@
 import type { Context } from "https://deno.land/x/oak/mod.ts";
-import { City, RCity } from "../../Schema/index.ts";
-import { throwError } from "../../utils/functions/throwErr.ts";
-import { myBodies, Reply } from "../../utils/typescript/commonTypes.ts";
+import { City, RCity } from "../../Schemas/index.ts";
+import { throwError } from "../../Utils/Function/index.ts";
+import { myBodies, Reply } from "../../Utils/TypeScript/index.ts";
 import { addingCity } from "./Funcs/add.ts";
 
 export interface CityExtraBody {
