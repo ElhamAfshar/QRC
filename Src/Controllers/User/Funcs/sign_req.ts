@@ -1,9 +1,6 @@
 import { RUser, User, users, Level } from "../../../Schemas/user.ts";
-import {
-  createVerificationCode,
-  isAuthFn,
-  throwError,
-} from "../../../Utils/index.ts";
+import { createVerificationCode, throwError } from "../../../Utils/index.ts";
+import { isAuthFn } from "../../../Utils/Middlewares/is_auth_fn.ts";
 import { redis } from "../../../Utils/Config/redis.ts";
 import type { details } from "../../../Utils/TypeScript/common_types.ts";
 import { findOne, creating } from "../../../Cfns/index.ts";

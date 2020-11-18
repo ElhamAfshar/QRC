@@ -5,7 +5,13 @@ export interface Reply<T> {
   body: Partial<T>[] | [];
 }
 
-type CRUD = "create" | "get" | "update" | "delete" | "singning";
+type CRUD =
+  | "create"
+  | "get"
+  | "update"
+  | "delete"
+  | "singning"
+  | "generate-guest-token";
 export interface details<R, T, E> {
   selected?: R;
   body?: Merge<T, E>;

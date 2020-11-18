@@ -1,12 +1,9 @@
 import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 import { update } from "../../../Cfns/index.ts";
 import { provinces, Province, RProvince } from "../../../Schemas/index.ts";
-import {
-  throwError,
-  isAuthFn,
-  details,
-  isAdminFn,
-} from "../../../Utils/index.ts";
+import { throwError, isAuthFn, isAdminFn } from "../../../Utils/index.ts";
+
+import type { details } from "../../../Utils/index.ts";
 import { ProvinceExtraBody } from "../province.ts";
 
 type ProvinceDetails = details<RProvince, Province, ProvinceExtraBody>;

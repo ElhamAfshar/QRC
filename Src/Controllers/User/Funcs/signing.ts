@@ -1,10 +1,10 @@
 import { RUser, User, users } from "../../../Schemas/user.ts";
-import { isAuthFn, throwError } from "../../../Utils/index.ts";
+import { throwError } from "../../../Utils/index.ts";
 import { redis } from "../../../Utils/Config/redis.ts";
 import type { details } from "../../../Utils/index.ts";
-import { generateJWt } from "../../../Utils/index.ts";
+import { generateJWt } from "../../../Utils/Middlewares/create_jwt.ts";
 import { findOne, update } from "../../../Cfns/index.ts";
-
+import { isAuthFn } from "../../../Utils/Middlewares/is_auth_fn.ts";
 type SignDetails = details<RUser, User, { code: string }>;
 
 export const Signing = async (token: string | null, details: SignDetails) => {
