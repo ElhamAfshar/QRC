@@ -4,7 +4,7 @@ import {
   // isAuthFn,
   throwError,
 } from "../../../Utils/index.ts";
-import { redis } from "../../../Utils/Config/redis.ts";
+
 import type { details } from "../../../Utils/TypeScript/common_types.ts";
 import { findAll } from "../../../Cfns/index.ts";
 

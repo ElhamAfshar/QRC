@@ -2,10 +2,9 @@ import type { Context } from "https://deno.land/x/oak/mod.ts";
 import { Poll, RPoll } from "../../Schemas/index.ts";
 import { throwError } from "../../Utils/Function/index.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/index.ts";
-import { addingPoll } from "./Funcs/add.ts";
+import { addingPoll } from "./Funcs/index.ts";
 
-export interface PollExtraBody {
-}
+export interface PollExtraBody {}
 
 export const poll = async ({ response, request }: Context) => {
   try {

@@ -1,9 +1,8 @@
-import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/ts/types.ts";
 import type { Context } from "https://deno.land/x/oak/mod.ts";
 import { RCenter, Center } from "../../Schemas/index.ts";
 import { throwError } from "../../Utils/Function/throw_err.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/common_types.ts";
-import { addingCenter } from "./Funcs/add.ts";
+import { addingCenter } from "./Funcs/index.ts";
 
 export interface CenterExtraBody {
   agent: string;

@@ -18,9 +18,3 @@ Deno.env.set("ENVIROMENT", "production");
 await app.listen({ port: PORT }).then(() => {
   console.log(`App running on PORT ${PORT}`);
 });
-
-
-import { create } from "https://deno.land/x/djwt@v1.9/mod.ts"
-
-const jwt = await create({ alg: "HS512", typ: "JWT" }, { foo: "bar" }, "secret")
-console.log(jwt);

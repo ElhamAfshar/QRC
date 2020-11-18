@@ -2,11 +2,9 @@ import type { Context } from "https://deno.land/x/oak/mod.ts";
 import { Question, RQuestion } from "../../Schemas/index.ts";
 import { throwError } from "../../Utils/Function/index.ts";
 import { myBodies, Reply } from "../../Utils/TypeScript/index.ts";
-import { addingQuestion } from "./Funcs/add.ts";
+import { addingQuestion } from "./Funcs/index.ts";
 
-
-export interface QuestionExtraBody {
-}
+export interface QuestionExtraBody {}
 
 export const question = async ({ response, request }: Context) => {
   try {

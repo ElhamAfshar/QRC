@@ -14,6 +14,7 @@ export interface Qr {
   polls?: Poll[];
   questions?: Question[];
   latLong?: LatLong; //????
+  isActive: boolean;
 }
 
 export interface RQr {
